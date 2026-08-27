@@ -3,16 +3,6 @@
 A modern personal finance management dashboard built with Angular.  
 FinanceManager helps users monitor their income, expenses, savings, transactions, budgets, and financial reports through a clean and intuitive interface.
 
----
-
-## 📌 Overview
-
-FinanceManager is an Angular-based finance management application designed to provide users with a centralized view of their financial activities.
-
-The dashboard presents important financial information through summary cards, charts, transaction lists, and different management sections.
-
----
-
 ## ✨ Features
 
 ### 📊 Dashboard
@@ -68,22 +58,86 @@ The dashboard presents important financial information through summary cards, ch
 
 ---
 
-## 🏗️ Angular Architecture
+## 🎨 UI
 
-The project follows a modern Angular application structure.
+The application uses a dashboard-based UI with:
 
-```text
-                    FinanceManager
-                          │
-              ┌───────────┴───────────┐
-              │                       │
-        Build & Delivery        Browser Application
-              │                       │
-       ┌──────┴──────┐          ┌─────┴─────┐
-       │             │          │           │
- package.json   package-lock  index.html  styles.css
-       │
- angular.json
-       │
-       ▼
- Production Build
+- Sidebar navigation
+- Top search bar
+- Financial summary cards
+- Charts and data visualization
+- Recent transaction list
+- Category indicators
+- User profile menu
+- Theme toggle
+- Card-based layout
+
+The UI is designed to provide a quick overview of financial information while keeping different finance-management features easily accessible.
+
+---
+
+## 🚀 Getting Started
+Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+- Angular CLI
+
+---
+
+## Clone the Repository:
+
+```
+git clone <repository-url>
+```
+
+## Navigate to the Project
+```
+cd finance-manager
+```
+
+## Install Dependencies
+```
+npm install
+Run Development Server
+ng serve
+```
+
+Open the application in your browser using the local URL provided by Angular CLI.
+
+---
+
+## 🎯 Project Objective
+
+The main objective of this project is to build a practical finance-management dashboard while applying modern Angular concepts, including:
+
+- Angular component architecture
+- Standalone application configuration
+- Angular routing
+- Application providers
+- Global and component-level styling
+- Angular CLI
+- npm dependency management
+- Dashboard UI development
+- Data visualization
+
+---
+## 🔮 Future Improvements
+
+The application can be extended with:
+
+- User authentication
+- Backend API integration
+- Database integration
+- Add/Edit/Delete transactions
+- Budget creation and tracking
+- Advanced reports
+- Date-range filtering
+- CSV/PDF export
+- Persistent user preferences
+- Real-time financial calculations
+- Responsive mobile navigation
+- User-specific financial data
+---
