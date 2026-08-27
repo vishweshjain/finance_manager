@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+// ============================================================
+// Responsive mixins
+// ============================================================
+
+@mixin sm-up { @media (min-width: #{$bp-sm}) { @content; } }
+@mixin md-up { @media (min-width: #{$bp-md}) { @content; } }
+@mixin lg-up { @media (min-width: #{$bp-lg}) { @content; } }
+@mixin xl-up { @media (min-width: #{$bp-xl}) { @content; } }
+
+@mixin sm-down { @media (max-width: #{$bp-sm - 1px}) { @content; } }
+@mixin md-down { @media (max-width: #{$bp-md - 1px}) { @content; } }
+@mixin lg-down { @media (max-width: #{$bp-lg - 1px}) { @content; } }
+
+// Truncate text with ellipsis
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Flex center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Card surface
+@mixin card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+}

@@ -1,0 +1,181 @@
+<app-page-header title="Transactions" subtitle="Add, edit and track every movement of your money">
+  <button pageActions class="btn btn-primary" (click)="openAdd()">＋ Add Transaction</button>
+</app-page-header>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <div class="search-box">
+    <span class="s-icon">🔍</span>
+    <input
+      type="search"
+      placeholder="Search title or note…"
+      [value]="searchTerm()"
+      (input)="onSearchInput($event)"
+    />
+  </div>
+
+  <select class="control" [value]="typeFilter()" (change)="setType($event)">
+    <option value="all">All types</option>
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+  </select>
+
+  <select class="control" [value]="categoryFilter()" (change)="setCategory($event)">
+    <option value="all">All categories</option>
+    @for (c of categories.categories(); track c.id) {
+      <option [value]="c.id">{{ c.icon }} {{ c.name }}</option>
+    }
+  </select>
+
+  <select class="control" [value]="monthFilter()" (change)="setMonth($event)">
+    <option value="all">All months</option>
+    @for (m of monthOptions(); track m) {
+      <option [value]="m">{{ m }}</option>
+    }
+  </select>
+
+  <button class="btn btn-ghost" (click)="resetFilters()">Reset</button>
+</div>
+
+<!-- Table -->
+<div class="card table-card">
+  @if (loading()) {
+    <app-loading-spinner [overlay]="true" label="Loading transactions…" />
+  }
+
+  @if (!loading() && paged().length === 0) {
+    <app-empty-state
+      icon="🔎"
+      title="No transactions found"
+      message="Try adjusting your filters or add a new transaction."
+      actionLabel="Add Transaction"
+      (action)="openAdd()"
+    />
+  }
+
+  @if (!loading() && paged().length > 0) {
+    <div class="table-scroll">
+      <table class="txn-table">
+        <thead>
+          <tr>
+            <th (click)="setSort('title')" class="sortable">Title {{ sortIndicator('title') }}</th>
+            <th>Category</th>
+            <th (click)="setSort('date')" class="sortable">Date {{ sortIndicator('date') }}</th>
+            <th>Type</th>
+            <th (click)="setSort('amount')" class="sortable th-right">Amount {{ sortIndicator('amount') }}</th>
+            <th class="th-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (t of paged(); track t.id) {
+            <tr>
+              <td>
+                <div class="cell-title">{{ t.title }}</div>
+                @if (t.note) { <div class="cell-note">{{ t.note }}</div> }
+              </td>
+              <td>
+                <span class="cat-pill" [style.background]="t.categoryId | categoryColor | bgSoft">
+                  {{ t.categoryId | categoryIcon }} {{ t.categoryId | categoryName }}
+                </span>
+              </td>
+              <td>{{ t.date | shortDate }}</td>
+              <td>
+                <span class="badge" [class.badge-income]="t.type === 'income'" [class.badge-expense]="t.type === 'expense'">
+                  {{ t.type === 'income' ? 'Income' : 'Expense' }}
+                </span>
+              </td>
+              <td class="td-right amount" [class.income]="t.type === 'income'" [class.expense]="t.type === 'expense'">
+                {{ t.type === 'income' ? '+' : '-' }}{{ t.amount | money }}
+              </td>
+              <td class="td-right">
+                <div class="row-actions">
+                  <button class="btn-icon" (click)="openEdit(t)" aria-label="Edit" title="Edit">✏️</button>
+                  <button class="btn-icon" (click)="askDelete(t)" aria-label="Delete" title="Delete">🗑️</button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <span class="page-info">Showing {{ (page() - 1) * pageSize() + 1 }}–{{ (page() - 1) * pageSize() + paged().length }} of {{ filtered().length }}</span>
+      <div class="page-controls">
+        <select class="control page-size" [value]="pageSize()" (change)="changePageSize($event)">
+          <option [value]="8">8 / page</option>
+          <option [value]="12">12 / page</option>
+          <option [value]="20">20 / page</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" (click)="changePage(-1)" [disabled]="page() === 1">‹ Prev</button>
+        <span class="page-num">Page {{ page() }} / {{ totalPages() }}</span>
+        <button class="btn btn-ghost btn-sm" (click)="changePage(1)" [disabled]="page() === totalPages()">Next ›</button>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- Add / Edit modal -->
+<app-modal [open]="modalOpen()" [hasFooter]="true" title="{{ editing() ? 'Edit Transaction' : 'Add Transaction' }}" (closed)="closeModal()">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="txn-form">
+    <div class="field">
+      <label>Title</label>
+      <input class="control" formControlName="title" placeholder="e.g. Grocery shopping" />
+      @if (fieldInvalid('title')) { <span class="error">Title is required (min 2 chars).</span> }
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Type</label>
+        <select class="control" formControlName="type">
+          <option value="expense">Expense</option>
+          <option value="income">Income</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Amount</label>
+        <input class="control" type="number" step="0.01" min="0" formControlName="amount" placeholder="0.00" />
+        @if (fieldInvalid('amount')) { <span class="error">Enter a valid amount.</span> }
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Category</label>
+      <select class="control" formControlName="categoryId">
+        <option value="" disabled>Select a category</option>
+        @for (c of categoryOptions(); track c.id) {
+          <option [value]="c.id">{{ c.icon }} {{ c.name }}</option>
+        }
+      </select>
+      @if (fieldInvalid('categoryId')) { <span class="error">Category is required.</span> }
+    </div>
+
+    <div class="field">
+      <label>Date</label>
+      <input class="control" type="date" formControlName="date" />
+      @if (fieldInvalid('date')) { <span class="error">Date is required.</span> }
+    </div>
+
+    <div class="field">
+      <label>Note (optional)</label>
+      <textarea class="control" formControlName="note" placeholder="Add a note…"></textarea>
+    </div>
+  </form>
+
+  <div modalFooter>
+    <button class="btn btn-ghost" (click)="closeModal()">Cancel</button>
+    <button class="btn btn-primary" (click)="submit()">
+      {{ editing() ? 'Save changes' : 'Add transaction' }}
+    </button>
+  </div>
+</app-modal>
+
+<app-confirm-dialog
+  [open]="confirmOpen()"
+  title="Delete transaction"
+  message="Are you sure you want to delete this transaction? This cannot be undone."
+  confirmText="Delete"
+  (confirm)="confirmDelete()"
+  (cancel)="confirmOpen.set(false)"
+/>
