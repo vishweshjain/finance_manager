@@ -1,59 +1,143 @@
-# FinanceManager
+# 💰 FinanceManager
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.6.
+A modern personal finance management dashboard built with Angular.  
+FinanceManager helps users monitor their income, expenses, savings, transactions, budgets, and financial reports through a clean and intuitive interface.
 
-## Development server
+## ✨ Features
 
-To start a local development server, run:
+### 📊 Dashboard
+- Total Balance overview
+- Income tracking
+- Expense tracking
+- Savings overview
+- Income vs Expense chart
+- Expense breakdown by category
+- Recent transactions
+- Transaction search
 
-```bash
+### 💳 Transactions
+- View financial transactions
+- Categorize transactions
+- Track income and expenses
+- View transaction details
+
+### 🎯 Budgets
+- Manage financial budgets
+- Monitor budget-related information
+
+### 📈 Reports
+- Analyze financial data
+- View financial insights and reports
+
+### 🏷️ Categories
+- Manage transaction categories
+- Organize expenses based on categories
+
+### 👤 Profile
+- User profile section
+- User-related information management
+
+### ⚙️ Settings
+- Application settings
+- User preferences
+
+### 🌙 Dark Mode
+- Toggle between light and dark themes
+
+---
+
+## 🛠️ Tech Stack
+
+- **Angular**
+- **TypeScript**
+- **HTML5**
+- **CSS3**
+- **Angular Router**
+- **Angular CLI**
+- **npm**
+
+---
+
+## 🎨 UI
+
+The application uses a dashboard-based UI with:
+
+- Sidebar navigation
+- Top search bar
+- Financial summary cards
+- Charts and data visualization
+- Recent transaction list
+- Category indicators
+- User profile menu
+- Theme toggle
+- Card-based layout
+
+The UI is designed to provide a quick overview of financial information while keeping different finance-management features easily accessible.
+
+---
+
+## 🚀 Getting Started
+Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+- Angular CLI
+
+---
+
+## Clone the Repository:
+
+```
+git clone <repository-url>
+```
+
+## Navigate to the Project
+```
+cd finance-manager
+```
+
+## Install Dependencies
+```
+npm install
+Run Development Server
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open the application in your browser using the local URL provided by Angular CLI.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🎯 Project Objective
 
-```bash
-ng generate component component-name
-```
+The main objective of this project is to build a practical finance-management dashboard while applying modern Angular concepts, including:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Angular component architecture
+- Standalone application configuration
+- Angular routing
+- Application providers
+- Global and component-level styling
+- Angular CLI
+- npm dependency management
+- Dashboard UI development
+- Data visualization
 
-```bash
-ng generate --help
-```
+---
+## 🔮 Future Improvements
 
-## Building
+The application can be extended with:
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- User authentication
+- Backend API integration
+- Database integration
+- Add/Edit/Delete transactions
+- Budget creation and tracking
+- Advanced reports
+- Date-range filtering
+- CSV/PDF export
+- Persistent user preferences
+- Real-time financial calculations
+- Responsive mobile navigation
+- User-specific financial data
+---
