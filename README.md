@@ -94,6 +94,12 @@ The UI is designed to provide a quick overview of financial information while ke
 
 ---
 
+## DEMO URL:
+```
+https://finance-manager-nu-wine.vercel.app/auth/login
+```
+---
+
 ## 🚀 Getting Started
 Prerequisites
 
