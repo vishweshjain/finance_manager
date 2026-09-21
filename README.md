@@ -6,6 +6,9 @@ FinanceManager helps users monitor their income, expenses, savings, transactions
 ## ✨ Features
 
 ### 📊 Dashboard
+
+<img width="1918" height="911" alt="image" src="https://github.com/user-attachments/assets/919ac2a9-7760-4d85-a49b-8d3fbdcf605d" />
+
 - Total Balance overview
 - Income tracking
 - Expense tracking
@@ -16,20 +19,35 @@ FinanceManager helps users monitor their income, expenses, savings, transactions
 - Transaction search
 
 ### 💳 Transactions
+
+<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/1f180570-8275-418f-abbc-f389b796024d" />
+
+
 - View financial transactions
 - Categorize transactions
 - Track income and expenses
 - View transaction details
 
 ### 🎯 Budgets
+
+<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/4d832e4d-540f-4aa2-8eff-82843c4e2b5f" />
+
+
 - Manage financial budgets
 - Monitor budget-related information
 
 ### 📈 Reports
+
+<img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/62b5b32c-3418-4298-b492-98bad0325b1c" />
+
+
 - Analyze financial data
 - View financial insights and reports
 
 ### 🏷️ Categories
+
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/5d31f199-88f7-4993-ba57-b364e5a0829c" />
+
 - Manage transaction categories
 - Organize expenses based on categories
 
