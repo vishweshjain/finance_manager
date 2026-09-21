@@ -3,6 +3,11 @@
 A modern personal finance management dashboard built with Angular.  
 FinanceManager helps users monitor their income, expenses, savings, transactions, budgets, and financial reports through a clean and intuitive interface.
 
+---
+## 🔗 DEMO URL:
+```
+https://finance-manager-nu-wine.vercel.app/auth/login
+```
 ## ✨ Features
 
 ### 📊 Dashboard
@@ -92,12 +97,6 @@ The application uses a dashboard-based UI with:
 
 The UI is designed to provide a quick overview of financial information while keeping different finance-management features easily accessible.
 
----
-
-## DEMO URL:
-```
-https://finance-manager-nu-wine.vercel.app/auth/login
-```
 ---
 
 ## 🚀 Getting Started
