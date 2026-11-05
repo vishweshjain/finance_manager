@@ -164,3 +164,8 @@ The application can be extended with:
 - Responsive mobile navigation
 - User-specific financial data
 ---
+## ⭐ Author
+
+Vishwesh Jain
+
+https://www.linkedin.com/in/vishwesh-jain/
